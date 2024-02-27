@@ -33,7 +33,7 @@ const options = {
 
     try{
 
-        const reponse = await fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&primary_release_date.gte=2024-02-27&sort_by=primary_release_date.asc%27`, options)
+        const reponse = await fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&primary_release_date.gte=2024-02-27&sort_by=primary_release_date.asc`, options)
         
         if(!reponse.ok){
 
@@ -51,15 +51,12 @@ const options = {
 
                 let releaseDate = dataMovie[i].release_date;
                 
-                let posterPath = dataMovie[i].backdrop_path;
-
-                 let releaseDate = dataMovie[i].release_date;
-                 
-                 let posterPath = dataMovie[i].poster_path;
-
-                
+                let posterPath = dataMovie[i].poster_path;
 
 
+                let idMovie = dataMovie[i].id;
+
+                console.log(idMovie);
 
 
                  
@@ -71,10 +68,13 @@ const options = {
 
             <p>${finded_genre.map(genre=>genre.name).join(', ')}</p>
             <img src="https://image.tmdb.org/t/p/w500${posterPath}"/>
+            <button> <a href="details.html?film=${idMovie}">CLICK</a></button>
             </div>
             `  
-           
+      
+
     } 
+
 
          } catch (erreur) {
 
@@ -85,7 +85,4 @@ const options = {
 
     loadGenres()
         .then(fetched_genres=>loadMovies(fetched_genres))
-
-
-
-        
+    
