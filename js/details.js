@@ -1,0 +1,1 @@
+new URL (document.location.href).searchParams.get('film')
