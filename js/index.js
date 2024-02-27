@@ -18,11 +18,20 @@ const options = {
         }
         const datas = await reponse.json(); 
 
-            console.log("Réussite :", datas);     
+            console.log("Réussite :", datas);   
+
+            let dataMovie = datas.results;
+
+            for (let i=0; i<dataMovie.length; i++){
             
-            for (let i=0; i<datas.results.length; i++){
-            let titleMovie = datas.results[i].title;
-            console.log(titleMovie)
+                 let titleMovies = dataMovie[i].title;
+
+            document.querySelector('.film-grid').innerHTML += `
+            <div class="film-card">
+            <h2>${titleMovies}</h2>
+            </div>
+            `
+                
     } 
 
          } catch (erreur) {
