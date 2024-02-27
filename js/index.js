@@ -26,12 +26,26 @@ const options = {
             
                  let titleMovies = dataMovie[i].title;
 
+                 let releaseDate = dataMovie[i].release_date;
+                 
+                 let posterPath = dataMovie[i].poster_path;
+
+                
+
+
+
+
+                 
+
             document.querySelector('.film-grid').innerHTML += `
             <div class="film-card">
             <h2>${titleMovies}</h2>
+            <p>${releaseDate}</p>
+            <img src="https://image.tmdb.org/t/p/w500${posterPath}"/>
             </div>
             `
-                
+          
+            
     } 
 
          } catch (erreur) {
@@ -42,3 +56,6 @@ const options = {
     }
 
         loadMovies();
+
+
+        
