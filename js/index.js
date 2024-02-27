@@ -53,15 +53,27 @@ const options = {
                 
                 let posterPath = dataMovie[i].backdrop_path;
 
+                 let releaseDate = dataMovie[i].release_date;
+                 
+                 let posterPath = dataMovie[i].poster_path;
+
+                
+
+
+
+
+                 
+
             document.querySelector('.film-grid').innerHTML += `
             <div class="film-card">
             <h2>${titleMovies}</h2>
             <p>${releaseDate}</p>
+
             <p>${finded_genre.map(genre=>genre.name).join(', ')}</p>
             <img src="https://image.tmdb.org/t/p/w500${posterPath}"/>
             </div>
             `  
-            
+           
     } 
 
          } catch (erreur) {
@@ -73,6 +85,7 @@ const options = {
 
     loadGenres()
         .then(fetched_genres=>loadMovies(fetched_genres))
+
 
 
         
