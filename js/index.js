@@ -21,8 +21,8 @@ const options = {
             console.log("Réussite :", datas);     
             
             for (let i=0; i<datas.results.length; i++){
-            let titleMovie = datas.results[i];
-            console.log(titleMovie[i].title)
+            let titleMovie = datas.results[i].title;
+            console.log(titleMovie)
     } 
 
          } catch (erreur) {
