@@ -55,17 +55,34 @@ async function detailMovie () {
                     let titleMovies = dataMovie.title;
                     let releaseDate = dataMovie.release_date;
                     let posterPath = dataMovie.poster_path;
+                    let resume = dataMovie.overview;
+
 
                     // let idMovie = dataMovie.id;
                     // console.log(idMovie);
 
 
                 document.querySelector('.film-details').innerHTML= `
-<h2>${titleMovies}</h2>
-<p>${releaseDate}</p>
-<img src="https://image.tmdb.org/t/p/w500${posterPath}"/>
-</div>
-                `  
+
+        </div>
+        <h2>${titleMovies}</h2>
+        <p>${releaseDate}</p>
+        <img src="https://image.tmdb.org/t/p/w500${posterPath}" alt="${titleMovies}"/>    
+        <h2>Synopsis</h2>
+        <p>${resume}</p>
+        <h2>Distribution</h2>
+        <p>Liste des acteurs...</p>
+        <section class="film-recommendations">
+        <h2>Recommandations</h2>
+        <div class="scroll-container">
+        </div>
+        </section>
+
+
+
+
+
+`  
 
 
              } catch (erreur) {
