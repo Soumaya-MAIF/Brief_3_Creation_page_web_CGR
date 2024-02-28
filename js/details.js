@@ -11,6 +11,7 @@ let castingMovie = null
 
 console.log(idMovie);
 
+
 async function loadCasting() {
     
     try {
@@ -68,6 +69,12 @@ async function detailMovie(cast) {
         let releaseDate = dataMovie.release_date;
         let posterPath = dataMovie.poster_path;
         let resume = dataMovie.overview;
+        let finded_genre = [];
+                    for (let i=0; i<genres.length; i++){
+                        
+                        finded_genre.push(genres[i].name);
+                        
+                    }
 
 
         // let idMovie = dataMovie.id;
@@ -79,6 +86,7 @@ async function detailMovie(cast) {
         
         <h2>${titleMovies}</h2>
         <p>${releaseDate}</p>
+        <p>${finded_genre.join(', ')}</p>
         <img src="https://image.tmdb.org/t/p/w500${posterPath}" alt="${titleMovies}"/>    
         <h2>Synopsis</h2>
         <p>${resume}</p>
@@ -105,4 +113,6 @@ async function detailMovie(cast) {
 
 loadCasting()
         .then(fetched_cast=>detailMovie(fetched_cast));
+
+
 
