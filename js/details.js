@@ -10,31 +10,7 @@ const options = {
  
  
 console.log(idMovie);
- 
-// async function loadGenres() {
-//     try {
-//         const reponse = await fetch(`https://api.themoviedb.org/3/genre/movie/list?language=fr`, options)
- 
-//         if(!reponse.ok){
- 
-//             throw new Error ('erreur de requete' + reponse.statusText);
-//         }
-//         const genresList = await reponse.json();
- 
-//         console.log("Réussite :", genresList);   
- 
-//         return genresList.genres
-//      } catch (erreur) {
- 
-//         console.error("Erreur :", erreur);
-//     }
- 
-//   }
- 
-//   console.log(loadGenres());
- 
- 
-  
+
 async function detailMovie () {
  
         try {
@@ -49,49 +25,41 @@ async function detailMovie () {
                 let dataMovie = datas;
  
                 console.log(dataMovie);
-                // for (let i=0; i<dataMovie.length; i++){
- 
-                    // let finded_genre = genres.filter(current_genre=>dataMovie.genre_ids.includes(current_genre.id))
                     let titleMovies = dataMovie.title;
                     let releaseDate = dataMovie.release_date;
                     let posterPath = dataMovie.poster_path;
                     let resume = dataMovie.overview;
-
-
-                    // let idMovie = dataMovie.id;
-                    // console.log(idMovie);
+                    let genres= dataMovie.genres;
+                    let finded_genre = [];
+                    for (let i=0; i<genres.length; i++){
+                        
+                        finded_genre.push(genres[i].name);
+                        
+                    }
 
 
                 document.querySelector('.film-details').innerHTML= `
 
-        </div>
-        <h2>${titleMovies}</h2>
-        <p>${releaseDate}</p>
-        <img src="https://image.tmdb.org/t/p/w500${posterPath}" alt="${titleMovies}"/>    
-        <h2>Synopsis</h2>
-        <p>${resume}</p>
-        <h2>Distribution</h2>
-        <p>Liste des acteurs...</p>
-        <section class="film-recommendations">
-        <h2>Recommandations</h2>
-        <div class="scroll-container">
-        </div>
-        </section>
-
-
-
-
-
-`  
-
+                    </div>
+                    <h2>${titleMovies}</h2>
+                    <p>${releaseDate}</p>
+                    <p>${finded_genre.join(', ')}</p>
+                    <img class="film-details" src="https://image.tmdb.org/t/p/w500${posterPath}" alt="${titleMovies}"/>    
+                    <h2>Synopsis</h2>
+                    <p>${resume}</p>
+                    <h2>Distribution</h2>
+                    <p>Liste des acteurs...</p>
+                    <section class="film-recommendations">
+                    <h2>Recommandations</h2>
+                    <div class="scroll-container">
+                    </div>
+                    </section>`
 
              } catch (erreur) {
                 console.error("Erreur :", erreur);
             }
         }
-        // loadGenres()
-        // .then(fetched_genres=>detailMovie(fetched_genres))
 
- 
         detailMovie();
+
 
