@@ -60,6 +60,7 @@ async function detailMovie(cast) {
         const datas = await reponse.json();
         console.log("Réussite :", datas);
         let dataMovie = datas;
+        let genres = dataMovie.genres;
 
         console.log(dataMovie);
         // for (let i=0; i<dataMovie.length; i++){
