@@ -1,3 +1,4 @@
+
 const options = {
     method: 'GET',
     headers: {
@@ -76,3 +77,4 @@ async function detailMovie () {
 
  
         detailMovie();
+
