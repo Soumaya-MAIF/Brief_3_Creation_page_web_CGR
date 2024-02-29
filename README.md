@@ -63,3 +63,7 @@ La selection d'un genre génère un fetch qui récupère les films appartenant �
 
 
 ![filtre_de_recherche](./img/filtre%20de%20recherche.png)
+
+### Note lighthouse
+
+![Lighthouse](./img/lighthouse%20accueil.png)
