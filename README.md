@@ -59,7 +59,7 @@ Pour continuer à s'exercer nous avons enrichi la page détail avec l'affichage 
 ### Mise en place d'un filtre de recherche par genre
 
 Nous avons ensuite choisi de d'enrichir notre page d'accueil d'un filtre de recherche par genre 
-La selection d'un genre genere un fetch qui récupere les films appartenant à la catégorie selectionné
+La selection d'un genre génère un fetch qui récupère les films appartenant à la catégorie selectionnée
 
 
 ![filtre_de_recherche](./img/filtre%20de%20recherche.png)
