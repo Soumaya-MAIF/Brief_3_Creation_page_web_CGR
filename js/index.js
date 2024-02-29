@@ -71,8 +71,7 @@ const options = {
             <p>${releaseDate}</p>
 
             <p>${finded_genre.map(genre=>genre.name).join(', ')}</p>
-            <img src="https://image.tmdb.org/t/p/w500${posterPath}"/>
-            <button> <a href="details.html?film=${idMovie}">CLICK</a></button>
+            <a href="details.html?film=${idMovie}"><img src="https://image.tmdb.org/t/p/w500${posterPath}"/</a>
             </div>
             `  
       
