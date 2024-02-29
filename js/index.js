@@ -7,6 +7,8 @@ const options = {
     }
   };
 
+  let date1 = new Date().toLocaleDateString();
+
  async function loadGenres() {
     
     try {
@@ -91,7 +93,7 @@ const options = {
             'include_video': false,
             'language': 'en-US',
             'page': 1,
-            'primary_release_date.gte': '2024-02-27',
+            'primary_release_date.gte': date1,
             'sort_by': 'primary_release_date.asc'
 
         }))
