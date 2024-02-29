@@ -7,6 +7,8 @@ const options = {
     }
   };
 
+  let date1 = new Date().toLocaleDateString();
+
  async function loadGenres() {
     
     try {
@@ -70,8 +72,7 @@ const options = {
             <p>${releaseDate}</p>
 
             <p>${finded_genre.map(genre=>genre.name).join(', ')}</p>
-            <img src="https://image.tmdb.org/t/p/w500${posterPath}"/>
-            <button> <a href="details.html?film=${idMovie}">CLICK</a></button>
+            <a href="details.html?film=${idMovie}"><img src="https://image.tmdb.org/t/p/w500${posterPath}"/</a>
             </div>
             `  
       
@@ -89,13 +90,14 @@ const options = {
     }
 
     loadGenres()
+
         .then(fetched_genres=>{
             loadMovies(fetched_genres, {
                 'include_adult': false,
                 'include_video': false,
                 'language': 'en-US',
                 'page': 1,
-                'primary_release_date.gte': '2024-02-27',
+                'primary_release_date.gte': date1,
                 'sort_by': 'primary_release_date.asc'
             })
             const choiceDataList = document.getElementById("gender-movie")
