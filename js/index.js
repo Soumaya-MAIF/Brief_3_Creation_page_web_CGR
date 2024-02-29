@@ -35,6 +35,7 @@ const options = {
     try{
         const url = new URL('/3/discover/movie', BASE_URL)
         url.search = queryParams.toString()
+        console.log(url.toString())
         const reponse = await fetch(url, options)
         
         if(!reponse.ok){
@@ -83,16 +84,38 @@ const options = {
             console.error("Erreur :", erreur);
         }
     
+
+
     }
 
     loadGenres()
-        .then(fetched_genres=>loadMovies(fetched_genres, {
-            'include_adult': false,
-            'include_video': false,
-            'language': 'en-US',
-            'page': 1,
-            'primary_release_date.gte': '2024-02-27',
-            'sort_by': 'primary_release_date.asc'
-
-        }))
+        .then(fetched_genres=>{
+            loadMovies(fetched_genres, {
+                'include_adult': false,
+                'include_video': false,
+                'language': 'en-US',
+                'page': 1,
+                'primary_release_date.gte': '2024-02-27',
+                'sort_by': 'primary_release_date.asc'
+            })
+            const choiceDataList = document.getElementById("gender-movie")
+            // Avec un array map
+            choiceDataList.innerHTML = fetched_genres.map(genre => `<option value="${genre.name}"></option>`).join('')
+            // Avec une boucle For
+            // for (let index = 0; index < fetched_genres.length; index++) {
+            //     const genre = fetched_genres[index];
+            //     choiceDataList.innerHTML += `<option value="${genre.name}"></option>`
+            // }
+            const choice = document.getElementById("gender-movie-choice")
+            choice.addEventListener("change", (e) => {
+                selectedValue = e.currentTarget.value;
+                console.log(selectedValue)
+                const selectedGenre = fetched_genres.find(genre=>genre.name == selectedValue)
+                loadMovies(fetched_genres, {
+                    'with_genres': selectedGenre.id,
+                    'primary_release_date.gte': '2024-01-01',
+                    'primary_release_date.lte': '2024-12-31'
+                })
+            })
+    })
     
