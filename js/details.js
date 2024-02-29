@@ -68,7 +68,7 @@ async function detailMovie(cast) {
         // let finded_genre = genres.filter(current_genre=>dataMovie.genre_ids.includes(current_genre.id))
         let titleMovies = dataMovie.title;
         let releaseDate = dataMovie.release_date;
-        let posterPath = dataMovie.poster_path;
+        let posterPath = dataMovie.backdrop_path??dataMovie.poster_path;
         let resume = dataMovie.overview;
         let finded_genre = [];
                     for (let i=0; i<genres.length; i++){

@@ -1,3 +1,4 @@
+const BASE_URL = 'https://api.themoviedb.org/'
 const options = {
     method: 'GET',
     headers: {
@@ -29,11 +30,12 @@ const options = {
 
 
 
- async function loadMovies (genres) {
-
+ async function loadMovies(genres, apiParams) {
+    const queryParams = new URLSearchParams(apiParams)
     try{
-
-        const reponse = await fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&primary_release_date.gte=2024-02-27&sort_by=primary_release_date.asc`, options)
+        const url = new URL('/3/discover/movie', BASE_URL)
+        url.search = queryParams.toString()
+        const reponse = await fetch(url, options)
         
         if(!reponse.ok){
 
@@ -44,7 +46,7 @@ const options = {
             console.log("Réussite :", datas);   
 
             let dataMovie = datas.results;
-
+            document.querySelector('.film-grid').innerHTML = ''
             for (let i=0; i<dataMovie.length; i++){
                 let finded_genre = genres.filter(current_genre=>dataMovie[i].genre_ids.includes(current_genre.id))
                 let titleMovies = dataMovie[i].title;
@@ -84,5 +86,13 @@ const options = {
     }
 
     loadGenres()
-        .then(fetched_genres=>loadMovies(fetched_genres))
+        .then(fetched_genres=>loadMovies(fetched_genres, {
+            'include_adult': false,
+            'include_video': false,
+            'language': 'en-US',
+            'page': 1,
+            'primary_release_date.gte': '2024-02-27',
+            'sort_by': 'primary_release_date.asc'
+
+        }))
     
