@@ -13,22 +13,22 @@ console.log(idMovie);
 
 
 async function loadCasting() {
-    
+
     try {
         const reponse = await fetch(`https://api.themoviedb.org/3/movie/${idMovie}/credits?language=en-US`, options)
 
-        if(!reponse.ok){
+        if (!reponse.ok) {
 
-            throw new Error ('erreur de requete' + reponse.statusText);
+            throw new Error('erreur de requete' + reponse.statusText);
         }
         let datas = await reponse.json();
-         
+
         console.log(datas);
-        console.log("Réussite :", datas);   
+        console.log("Réussite :", datas);
         casting = datas.cast;
         console.log(casting)
-     
-     } catch (erreur) {
+
+    } catch (erreur) {
 
         console.error("Erreur :", erreur);
     }
@@ -39,14 +39,9 @@ async function loadCasting() {
         castingMovie.push(casting[i].name);
     }
     console.log(castingMovie);
-  //Ici je veux boucler dans mon tableau castList pour extraire les noms des acteurs
-  //
-  // Puis faire une condition if(known_for_department != actor)
-  // alors on extrait pas la donnée
 
-
-  }
-  loadCasting();
+}
+loadCasting();
 
 async function detailMovie(cast) {
 
@@ -68,14 +63,14 @@ async function detailMovie(cast) {
         // let finded_genre = genres.filter(current_genre=>dataMovie.genre_ids.includes(current_genre.id))
         let titleMovies = dataMovie.title;
         let releaseDate = dataMovie.release_date;
-        let posterPath = dataMovie.backdrop_path??dataMovie.poster_path;
+        let posterPath = dataMovie.backdrop_path ?? dataMovie.poster_path;
         let resume = dataMovie.overview;
         let finded_genre = [];
-                    for (let i=0; i<genres.length; i++){
-                        
-                        finded_genre.push(genres[i].name);
-                        
-                    }
+        for (let i = 0; i < genres.length; i++) {
+
+            finded_genre.push(genres[i].name);
+
+        }
 
 
         // let idMovie = dataMovie.id;
@@ -84,7 +79,7 @@ async function detailMovie(cast) {
 
         document.querySelector('.film-details').innerHTML = `
 
-        
+        <div class="film-details">
         <h2>${titleMovies}</h2>
         <p>${releaseDate}</p>
         <p>${finded_genre.join(', ')}</p>
@@ -93,10 +88,9 @@ async function detailMovie(cast) {
         <p>${resume}</p>
         <h2>Distribution</h2>
         <p>${castingMovie?.join(', ')}</p>
+        </main>
         <section class="film-recommendations">
         <h2>Recommandations</h2>
-        <div class="scroll-container">
-        </div>
         </section>
 
 
@@ -113,7 +107,7 @@ async function detailMovie(cast) {
 
 
 loadCasting()
-        .then(fetched_cast=>detailMovie(fetched_cast));
+    .then(fetched_cast => detailMovie(fetched_cast));
 
 
 

@@ -76,9 +76,10 @@ header {
 }
 
 .film-details img {
-  width: auto;
+  width: 100%;
   height: auto;
   object-fit: contain;
+  padding: 1%;
 }
 
 .film-recommendations {
@@ -137,6 +138,7 @@ header {
       margin-right: 20px; /* ajoute un peu d'espace entre l'image et le texte à côté */
   }
 
+  
   .film-details > * {
       flex: 1; /* donne une flexibilité égale aux éléments enfants direct de .film-details, permettant un arrangement plus équilibré */
   }

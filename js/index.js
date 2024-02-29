@@ -115,7 +115,7 @@ const options = {
                 const selectedGenre = fetched_genres.find(genre=>genre.name == selectedValue)
                 loadMovies(fetched_genres, {
                     'with_genres': selectedGenre.id,
-                    'primary_release_date.gte': '2024-01-01',
+                    'primary_release_date.gte': date1,
                     'primary_release_date.lte': '2024-12-31'
                 })
             })
